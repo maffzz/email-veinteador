@@ -4,6 +4,7 @@ import com.example.hack1.dto.JwtAuthenticationResponse;
 import com.example.hack1.dto.SigninRequest;
 import com.example.hack1.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,10 +24,14 @@ public class AuthenticationService {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    ApplicationEventPublisher applicationEventPublisher;
+
     public JwtAuthenticationResponse signup(UserAccount user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        userRepository.save(user);
+        UserAccount savedUser = userRepository.save(user);
+        applicationEventPublisher.publishEvent(new WelcomeEmailEvent(this, savedUser.getEmail(), savedUser.getFirstName()));
         var jwt = jwtService.generateToken(user);
 
         JwtAuthenticationResponse response = new JwtAuthenticationResponse();
