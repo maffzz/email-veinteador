@@ -18,6 +18,6 @@ public class HelloController {
 
     @GetMapping("/user")
     public ResponseEntity<String> helloUser(Principal principal) {
-        return new ResponseEntity<>("Hello " + principal.toString(), HttpStatus.OK);
+        return new ResponseEntity<>("Hello " + principal.getName(), HttpStatus.OK);
     }
 }
