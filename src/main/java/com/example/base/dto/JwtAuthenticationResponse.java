@@ -1,14 +1,12 @@
-package com.example.hack1.dto;
+package com.example.base.dto;
 
 public class JwtAuthenticationResponse {
     private String token;
 
-    public JwtAuthenticationResponse() {
-    }
+    public JwtAuthenticationResponse() {}
 
     public JwtAuthenticationResponse(String token) {
-        this.token = token;
-    }
+        this.token = token;}
 
     public String getToken() {
         return token;
@@ -16,5 +14,4 @@ public class JwtAuthenticationResponse {
 
     public void setToken(String token) {
         this.token = token;
-    }
-}
+    }}

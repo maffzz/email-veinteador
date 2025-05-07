@@ -1,4 +1,4 @@
-package com.example.hack1.controller;
+package com.example.base.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +18,4 @@ public class HelloController {
 
     @GetMapping("/user")
     public ResponseEntity<String> helloUser(Principal principal) {
-        return new ResponseEntity<>("Hello " + principal.getName(), HttpStatus.OK);
-    }
-}
+        return new ResponseEntity<>("Hello " + principal.getName(), HttpStatus.OK);}}

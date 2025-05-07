@@ -1,5 +1,7 @@
-package com.example.hack1.domain;
+package com.example.base.listener;
 
+import com.example.base.event.WelcomeEmailEvent;
+import com.example.base.service.EmailService;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -7,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WelcomeEmailListener {
 
-    final private EmailService emailService;
+    private final EmailService emailService;
 
     public WelcomeEmailListener(EmailService emailService) {
         this.emailService = emailService;
@@ -17,11 +19,8 @@ public class WelcomeEmailListener {
     @Async
     public void sendWelcomeEmail(WelcomeEmailEvent welcomeEmailEvent) {
         try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
+            Thread.sleep(10000);}
+        catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Thread was interrupted", e);
-        }
-        emailService.sendEmail(welcomeEmailEvent.getEmail(), "Bienvenido", "Hola " + welcomeEmailEvent.getName() + ", bienvenido a nuestra plataforma.");
-    }
-}
+            throw new RuntimeException("Thread was interrupted", e);}
+        emailService.sendEmail(welcomeEmailEvent.getEmail(), "bienvenido", "hola " + welcomeEmailEvent.getName() + ", bienvenido a nuestra plataforma");}}

@@ -1,6 +1,6 @@
-package com.example.hack1.domain;
+package com.example.base.service;
 
-import com.example.hack1.repository.UserAccountRepository;
+import com.example.base.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,10 +14,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByEmail(username);
-    }
+        return repository.findByEmail(username);}
 
     public UserDetailsService userDetailsService() {
         return this;
-    }
-}
+    }}

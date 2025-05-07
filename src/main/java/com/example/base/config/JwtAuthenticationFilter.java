@@ -1,7 +1,7 @@
-package com.example.hack1.config;
+package com.example.base.config;
 
-import com.example.hack1.domain.JwtService;
-import com.example.hack1.domain.UserDetailsServiceImpl;
+import com.example.base.service.JwtService;
+import com.example.base.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,7 +22,6 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private JwtService jwtService;
-
     @Autowired
     private UserDetailsServiceImpl userService;
 
@@ -34,8 +33,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (!StringUtils.hasText(authHeader) || !StringUtils.startsWithIgnoreCase(authHeader, "Bearer")) {
             filterChain.doFilter(request, response);
-            return;
-        }
+            return;}
 
         jwt = authHeader.substring(7);
         userEmail = jwtService.extractUserName(jwt);
@@ -49,10 +47,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                         userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 context.setAuthentication(authToken);
-                SecurityContextHolder.setContext(context);
-            }
-        }
+                SecurityContextHolder.setContext(context);}}
 
-        filterChain.doFilter(request, response);
-    }
-}
+        filterChain.doFilter(request, response);}}

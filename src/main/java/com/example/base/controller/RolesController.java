@@ -1,4 +1,4 @@
-package com.example.hack1.controller;
+package com.example.base.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,18 +14,14 @@ public class RolesController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     public ResponseEntity<String> admin(Principal principal) {
-        return ResponseEntity.ok("Soy un admin: " + principal.getName());
-    }
+        return ResponseEntity.ok("Soy un admin: " + principal.getName());}
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user")
     public ResponseEntity<String> user(Principal principal) {
-        return ResponseEntity.ok("Soy un user: " + principal.getName());
-    }
+        return ResponseEntity.ok("Soy un user: " + principal.getName());}
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping("/both")
     public ResponseEntity<String> both(Principal principal) {
-        return ResponseEntity.ok("Soy un user o un admin: " + principal.getName());
-    }
-}
+        return ResponseEntity.ok("Soy un user o un admin: " + principal.getName());}}

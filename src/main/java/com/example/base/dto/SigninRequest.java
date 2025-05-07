@@ -1,16 +1,14 @@
-package com.example.hack1.dto;
+package com.example.base.dto;
 
 public class SigninRequest {
     private String email;
     private String password;
 
-    public SigninRequest() {
-    }
+    public SigninRequest() {}
 
     public SigninRequest(String email, String password) {
         this.email = email;
-        this.password = password;
-    }
+        this.password = password;}
 
     public String getEmail() {
         return email;
@@ -26,5 +24,4 @@ public class SigninRequest {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-}
+    }}

@@ -1,4 +1,4 @@
-package com.example.hack1.domain;
+package com.example.base.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -43,8 +43,7 @@ public class UserAccount implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
-    }
+        return List.of(new SimpleGrantedAuthority(role.name()));}
 
     @Override
     public String getUsername() {
@@ -69,5 +68,4 @@ public class UserAccount implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enable;
-    }
-}
+    }}

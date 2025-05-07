@@ -1,6 +1,6 @@
-package com.example.hack1.config;
+package com.example.base.config;
 
-import com.example.hack1.domain.UserDetailsServiceImpl;
+import com.example.base.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +34,6 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 public class SecurityConfig {
     @Autowired
     JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
@@ -46,8 +45,7 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
-    }
+        return http.build();}
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -55,8 +53,7 @@ public class SecurityConfig {
         authProvider.setPasswordEncoder(passwordEncoder());
         authProvider.setUserDetailsService(userDetailsService.userDetailsService());
 
-        return authProvider;
-    }
+        return authProvider;}
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -68,8 +65,7 @@ public class SecurityConfig {
         RoleHierarchyImpl hierarchy = new RoleHierarchyImpl();
         hierarchy.setHierarchy("ADMIN > USER");
 
-        return hierarchy;
-    }
+        return hierarchy;}
 
     @Bean
     static MethodSecurityExpressionHandler methodSecurityExpressionHandler(RoleHierarchy roleHierarchy) {
@@ -77,16 +73,13 @@ public class SecurityConfig {
         expressionHandler.setRoleHierarchy(roleHierarchy);
         expressionHandler.setDefaultRolePrefix("");
 
-        return expressionHandler;
-    }
+        return expressionHandler;}
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
-    }
+        return config.getAuthenticationManager();}
 
     @Bean(name = "taskExecutor")
     public TaskExecutor taskExecutor() {
         return new SimpleAsyncTaskExecutor();
-    }
-}
+    }}

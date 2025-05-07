@@ -1,19 +1,18 @@
-package com.example.hack1.domain;
+package com.example.base.service;
 
-import com.example.hack1.repository.UserAccountRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.base.domain.UserAccount;
+import com.example.base.repository.UserAccountRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserAccountService {
-    @Autowired
-    UserAccountRepository repository;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    private final UserAccountRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     public List<UserAccount> list() {
         return repository.findAll();
@@ -21,6 +20,4 @@ public class UserAccountService {
 
     public void save(UserAccount user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        repository.save(user);
-    }
-}
+        repository.save(user);}}
