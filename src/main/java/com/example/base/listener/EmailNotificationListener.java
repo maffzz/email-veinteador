@@ -7,17 +7,16 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WelcomeEmailListener {
+public class EmailNotificationListener {
 
     private final EmailService emailService;
 
-    public WelcomeEmailListener(EmailService emailService) {
-        this.emailService = emailService;
-    }
+    public EmailNotificationListener(EmailService emailService) {
+        this.emailService = emailService;}
 
     @EventListener
     @Async
-    public void sendWelcomeEmail(WelcomeEmailEvent welcomeEmailEvent) {
+    public void sendEmail(WelcomeEmailEvent welcomeEmailEvent) {
         try {
             Thread.sleep(10000);}
         catch (InterruptedException e) {
