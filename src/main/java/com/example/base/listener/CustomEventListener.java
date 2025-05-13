@@ -1,6 +1,6 @@
 package com.example.base.listener;
 
-import com.example.eventos.event.CustomEvent;
+import com.example.base.event.CustomEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
