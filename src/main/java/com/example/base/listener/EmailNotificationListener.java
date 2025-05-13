@@ -23,3 +23,16 @@ public class EmailNotificationListener {
             Thread.currentThread().interrupt();
             throw new RuntimeException("Thread was interrupted", e);}
         emailService.sendEmail(welcomeEmailEvent.getEmail(), "bienvenido", "hola " + welcomeEmailEvent.getName() + ", bienvenido a nuestra plataforma");}}
+
+
+//@Component
+//public class EmailNotificationListener {
+//
+//    @EventListener
+//    public void handleOrderCreatedEvent(OrderCreatedEvent event) {
+//        // Simular envío de correo
+//        System.out.println("Enviando correo de confirmación para el pedido: " + event.getOrderId());
+//        System.out.println("Correo enviado a: " + event.getEmail());
+//        System.out.println("Productos: " + String.join(", ", event.getProductos()));
+//    }
+//}
