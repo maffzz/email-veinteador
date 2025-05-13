@@ -15,5 +15,4 @@ public class Pedido {
     @Column(nullable = false)
     @Email
     private String email;
-    private List<String> productos;
-}
+    private List<String> productos;}

@@ -11,8 +11,7 @@ public class OrderCreatedEvent {
     public OrderCreatedEvent(Pedido pedido) {
         this.orderId = pedido.getId();
         this.email = pedido.getEmail();
-        this.productos = pedido.getProductos();
-    }
+        this.productos = pedido.getProductos();}
 
     public Long getOrderId() {
         return orderId;
